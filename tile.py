@@ -3,4 +3,4 @@ class Tile:
         self.val = val
         
     def __str__(self):
-        return f"Tile(val={self.val})"
+        return str(self.val)

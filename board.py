@@ -14,7 +14,6 @@ class Board:
         """Creates grid of x size when the board is initialized"""
         for x in range(self.size):
             self.grid.append([0 for y in range(self.size)])
-        print("Grid Built\n")
         
     def createTile(self) -> Tile:
         """Returns a 4 tile 10% of the time and a 2 tile the other 90%"""
@@ -36,7 +35,6 @@ class Board:
         x = pos[0]
         y = pos[1]
         self.grid[x][y] = newTile # Why does it just ignore this line
-        print(self.grid[x][y])
         # DONE Create a tile
         # DONE Find a random !empty! position for the it
         # TODO Put it at that position
@@ -49,7 +47,12 @@ class Board:
     def show(self):
         out = ""
         for row in self.grid:
-            out += str(row) + "\n"
+            for tile in row:
+                if not tile:
+                    out += "[ ]"
+                else:
+                    out += f"[{str(tile)}]"
+            out += "\n"
         return out
         
 # Ok so what does this board need to do (backend)
