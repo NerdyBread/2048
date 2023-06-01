@@ -3,5 +3,4 @@ from tile import Tile
 
 class Game:
     def __init__(self):
-        pass
-    
+        self.board = Board(4)
