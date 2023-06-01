@@ -3,58 +3,64 @@ import random
 from tile import Tile
 
 class Board:
-    def __init__(self, size):
-        self.size = size
-        self.grid = []
-        self._buildGrid()
-        self.empty = (size**2) - 2 # Because two spaces are filled by self.start()
-        self.start()
-        
-    def _buildGrid(self):
-        """Creates grid of x size when the board is initialized"""
-        for x in range(self.size):
-            self.grid.append([0 for y in range(self.size)])
-        
-    def createTile(self) -> Tile:
-        """Returns a 4 tile 10% of the time and a 2 tile the other 90%"""
-        if not random.randint(0, 9):
-            return Tile(4)
-        else:
-            return Tile(2)
-        # TODO Fix this
-    
-    def addRandomTile(self):
-        """Adds tile to random empty spot on the board"""
-        newTile = self.createTile()
-        empty = [] # TODO fix this ugly ass code
-        for i, row in enumerate(self.grid):
-            for j, tile in enumerate(row):
-                if tile == 0:
-                    empty.append([i, j])
-        pos = random.choice(empty)
-        x = pos[0]
-        y = pos[1]
-        self.grid[x][y] = newTile # Why does it just ignore this line
-        # DONE Create a tile
-        # DONE Find a random !empty! position for the it
-        # TODO Put it at that position
-    
-    def start(self):
-        """Add two tiles to random spots at the start of the game"""
-        self.addRandomTile()
-        self.addRandomTile()
-        
-    def show(self):
-        out = ""
-        for row in self.grid:
-            for tile in row:
-                if not tile:
-                    out += "[ ]"
-                else:
-                    out += f"[{str(tile)}]"
-            out += "\n"
-        return out
-        
+	def __init__(self, size):
+		self.size = size
+		self.grid = []
+		self._buildGrid()
+		self.empty = (size**2) - 2 # Because two spaces are filled by self.start()
+		self.start()
+		
+	def _buildGrid(self):
+		"""Creates grid of x size when the board is initialized"""
+		for x in range(self.size):
+			self.grid.append([0 for y in range(self.size)])
+		
+	def createTile(self) -> Tile:
+		"""Returns a 4 tile 10% of the time and a 2 tile the other 90%"""
+		if not random.randint(0, 9):
+			return Tile(4)
+		else:
+			return Tile(2)
+		# TODO Fix this
+	
+	def addRandomTile(self):
+		"""Adds tile to random empty spot on the board"""
+		newTile = self.createTile()
+		empty = [] # TODO fix this ugly ass code
+		for i, row in enumerate(self.grid):
+			for j, tile in enumerate(row):
+				if tile == 0:
+					empty.append([i, j])
+		pos = random.choice(empty)
+		x = pos[0]
+		y = pos[1]
+		self.grid[x][y] = newTile # Why does it just ignore this line
+		# DONE Create a tile
+		# DONE Find a random !empty! position for the it
+		# TODO Put it at that position
+	
+	def start(self):
+		"""Add two tiles to random spots at the start of the game"""
+		self.addRandomTile()
+		self.addRandomTile()
+		
+	def show(self):
+		out = ""
+		for row in self.grid:
+			for tile in row:
+				if not tile:
+					out += "[ ]"
+				else:
+					out += f"[{str(tile)}]"
+			out += "\n"
+		return out
+	
+		
+	def move(self, direction):
+		"""Board updates according to input and adds new tile"""
+		# Empty 
+		pass
+		
 # Ok so what does this board need to do (backend)
 """
 1. Manage a list of the current tiles and their values DONE
