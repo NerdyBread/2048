@@ -26,8 +26,7 @@ class Board:
     
     def addRandomTile(self):
         """Adds tile to random empty spot on the board"""
-        tile = self.createTile()
-        print(tile)
+        newTile = self.createTile()
         empty = [] # TODO fix this ugly ass code
         for i, row in enumerate(self.grid):
             for j, tile in enumerate(row):
@@ -36,7 +35,7 @@ class Board:
         pos = random.choice(empty)
         x = pos[0]
         y = pos[1]
-        self.grid[x][y] = tile # Why does it just ignore this line
+        self.grid[x][y] = newTile # Why does it just ignore this line
         print(self.grid[x][y])
         # DONE Create a tile
         # DONE Find a random !empty! position for the it
